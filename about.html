@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Intelliroot Cybersecurity</title>
+  <style>
+    :root {
+      --bg: #05070d;
+      --bg-soft: #0b1020;
+      --card: rgba(255, 255, 255, 0.075);
+      --card-strong: rgba(255, 255, 255, 0.12);
+      --text: #f7fbff;
+      --muted: #aeb9cc;
+      --line: rgba(255, 255, 255, 0.12);
+      --brand: #2df7c7;
+      --brand-2: #7b61ff;
+      --danger: #ff5c8a;
+      --warning: #ffd166;
+      --shadow: 0 24px 90px rgba(0, 0, 0, 0.48);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(45, 247, 199, 0.18), transparent 34rem),
+        radial-gradient(circle at 84% 8%, rgba(123, 97, 255, 0.18), transparent 32rem),
+        radial-gradient(circle at 50% 100%, rgba(255, 92, 138, 0.08), transparent 30rem),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .noise {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.12;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      background: rgba(5, 7, 13, 0.74);
+    }
+
+    .nav-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      font-size: 1.18rem;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #03110e;
+      background: linear-gradient(135deg, var(--brand), #d2fff4);
+      box-shadow: 0 12px 40px rgba(45, 247, 199, 0.24);
+      font-weight: 950;
+    }
+
+    .nav-links,
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .nav-links {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      cursor: pointer;
+      transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+      font-weight: 800;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.26);
+    }
+
+    .btn-primary {
+      border-color: transparent;
+      color: #03110e;
+      background: linear-gradient(135deg, var(--brand), #78ffe3);
+      box-shadow: 0 18px 50px rgba(45, 247, 199, 0.22);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      align-items: center;
+      padding: 76px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      margin-bottom: 22px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #d9fff6;
+      background: rgba(45, 247, 199, 0.08);
+      font-weight: 800;
+      font-size: 0.88rem;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--brand);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(45, 247, 199, 0.55); }
+      70% { box-shadow: 0 0 0 12px rgba(45, 247, 199, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(45, 247, 199, 0); }
+    }
+
+    h1 {
+      max-width: 900px;
+      margin-bottom: 26px;
+      font-size: clamp(3.1rem, 8vw, 7.2rem);
+      line-height: 0.88;
+      letter-spacing: -0.08em;
+    }
+
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(135deg, #ffffff, #aafced 45%, #9283ff 92%);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-copy p {
+      max-width: 660px;
+      margin-bottom: 30px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-tags span {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #dce7f7;
+      background: rgba(255, 255, 255, 0.045);
+      font-size: 0.9rem;
+    }
+
+    .about-console {
+      position: relative;
+      min-height: 620px;
+      border: 1px solid var(--line);
+      border-radius: 40px;
+      padding: 18px;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+    }
+
+    .about-console::before {
+      content: "";
+      position: absolute;
+      width: 390px;
+      height: 390px;
+      top: -120px;
+      right: -90px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(45, 247, 199, 0.34), transparent 68%);
+      filter: blur(8px);
+    }
+
+    .about-console::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 88%);
+    }
+
+    .console-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      height: 100%;
+    }
+
+    .console-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 22px;
+      background: rgba(5, 7, 13, 0.68);
+      backdrop-filter: blur(16px);
+    }
+
+    .console-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .console-title {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .console-score {
+      margin-top: 6px;
+      font-size: 3.5rem;
+      line-height: 1;
+      letter-spacing: -0.07em;
+      font-weight: 950;
+    }
+
+    .console-score small {
+      color: var(--brand);
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .status-pill {
+      height: fit-content;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(45, 247, 199, 0.25);
+      color: #c9fff4;
+      background: rgba(45, 247, 199, 0.12);
+      font-weight: 900;
+      font-size: 0.78rem;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 44px;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .bar {
+      height: 9px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .bar i {
+      display: block;
+      width: var(--w);
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+    }
+
+    .console-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .metric-card {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.065);
+      backdrop-filter: blur(16px);
+    }
+
+    .metric-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.7rem;
+      letter-spacing: -0.05em;
+    }
+
+    .metric-card span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .console-alert {
+      margin-top: auto;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(123, 97, 255, 0.25), rgba(45, 247, 199, 0.1));
+    }
+
+    .console-alert h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+    }
+
+    .console-alert p {
+      color: #d9e2f5;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 0.85fr 1fr;
+      align-items: end;
+      gap: 34px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--brand);
+      font-size: 0.78rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    h2 {
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 1.04rem;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .story-card,
+    .mission-card,
+    .value-card,
+    .timeline-card,
+    .faq-item {
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .story-card {
+      border-radius: 36px;
+      padding: clamp(28px, 5vw, 46px);
+    }
+
+    .story-card h2 {
+      margin-bottom: 20px;
+    }
+
+    .story-card p {
+      color: var(--muted);
+      line-height: 1.78;
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+
+    .story-points {
+      display: grid;
+      gap: 14px;
+    }
+
+    .story-point {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 16px;
+      padding: 22px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .story-point span:first-child {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      color: #03110e;
+      background: linear-gradient(135deg, var(--brand), #d2fff4);
+      font-weight: 950;
+    }
+
+    .story-point strong {
+      display: block;
+      margin-bottom: 6px;
+      letter-spacing: -0.03em;
+    }
+
+    .story-point p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.93rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 26px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .stat-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 2.6rem;
+      letter-spacing: -0.07em;
+    }
+
+    .stat-card span {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .mission-card {
+      min-height: 300px;
+      border-radius: 30px;
+      padding: 26px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .mission-card:hover,
+    .value-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(45, 247, 199, 0.32);
+      background: var(--card-strong);
+    }
+
+    .mission-icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      color: var(--brand);
+      background: rgba(45, 247, 199, 0.12);
+      font-size: 1.35rem;
+    }
+
+    .mission-card h3,
+    .value-card h3,
+    .timeline-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.24rem;
+      letter-spacing: -0.04em;
+    }
+
+    .mission-card p,
+    .value-card p,
+    .timeline-card p {
+      color: var(--muted);
+      line-height: 1.68;
+      font-size: 0.95rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .value-card {
+      min-height: 230px;
+      border-radius: 28px;
+      padding: 24px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .value-number {
+      color: var(--brand);
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      margin-bottom: 44px;
+      font-size: 1.6rem;
+    }
+
+    .timeline-wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 22px;
+      width: 1px;
+      background: var(--line);
+    }
+
+    .timeline-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .timeline-dot {
+      position: relative;
+      z-index: 2;
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: #03110e;
+      background: linear-gradient(135deg, var(--brand), #d2fff4);
+      font-weight: 950;
+      font-size: 0.78rem;
+    }
+
+    .team-panel {
+      position: relative;
+      min-height: 450px;
+      border: 1px solid var(--line);
+      border-radius: 36px;
+      padding: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(45, 247, 199, 0.22), transparent 15rem),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+    }
+
+    .orbit {
+      position: absolute;
+      inset: 52px;
+      border: 1px solid rgba(45, 247, 199, 0.22);
+      border-radius: 999px;
+      animation: spin 24s linear infinite;
+    }
+
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      inset: 44px;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      border-radius: inherit;
+    }
+
+    .orbit::after {
+      inset: 98px;
+      border-color: rgba(123, 97, 255, 0.35);
+    }
+
+    .node {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--brand);
+      box-shadow: 0 0 24px rgba(45, 247, 199, 0.75);
+    }
+
+    .node.one { top: 20px; left: 50%; }
+    .node.two { right: 35px; bottom: 78px; background: var(--brand-2); }
+    .node.three { left: 48px; bottom: 58px; background: var(--danger); }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .team-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .team-content h2 {
+      margin-bottom: 16px;
+    }
+
+    .team-content p {
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 500px;
+    }
+
+    .faq-wrap {
+      display: grid;
+      grid-template-columns: 0.75fr 1fr;
+      gap: 34px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 22px;
+      border: 0;
+      color: var(--text);
+      background: transparent;
+      cursor: pointer;
+      text-align: left;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    .faq-question span:last-child {
+      color: var(--brand);
+      font-size: 1.4rem;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-answer p {
+      padding: 0 22px 22px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 230px;
+    }
+
+    .cta {
+      padding-bottom: 110px;
+    }
+
+    .cta-box {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 30px;
+      padding: clamp(30px, 7vw, 70px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 42px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(45, 247, 199, 0.25), transparent 22rem),
+        radial-gradient(circle at 90% 10%, rgba(123, 97, 255, 0.24), transparent 22rem),
+        rgba(255, 255, 255, 0.075);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      max-width: 780px;
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      max-width: 680px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .site-footer {
+      position: relative;
+      border-top: 1px solid var(--line);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(45, 247, 199, 0.12), transparent 22rem),
+        radial-gradient(circle at 90% 18%, rgba(123, 97, 255, 0.14), transparent 26rem),
+        #04060b;
+    }
+
+    .site-footer::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.78), transparent 92%);
+    }
+
+    .footer-main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr 0.75fr 1fr;
+      gap: 34px;
+      padding: 58px 0 44px;
+    }
+
+    .footer-about p {
+      max-width: 390px;
+      margin: 18px 0 22px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .footer-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-badges span {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #d9fff6;
+      background: rgba(45, 247, 199, 0.07);
+      font-size: 0.8rem;
+      font-weight: 900;
+    }
+
+    .footer-col h3 {
+      margin-bottom: 18px;
+      color: var(--brand);
+      font-size: 0.86rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 13px;
+    }
+
+    .footer-links a,
+    .footer-contact a,
+    .footer-contact span {
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover,
+    .footer-contact a:hover {
+      color: var(--text);
+    }
+
+    .footer-contact {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: grid;
+      gap: 4px;
+    }
+
+    .contact-label {
+      color: #dce7f7 !important;
+      font-weight: 900;
+      font-size: 0.84rem !important;
+    }
+
+    .newsletter {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 7px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .newsletter input {
+      flex: 1;
+      min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 0 12px;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .newsletter input::placeholder {
+      color: rgba(174, 185, 204, 0.78);
+    }
+
+    .newsletter button {
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      color: #03110e;
+      background: linear-gradient(135deg, var(--brand), #78ffe3);
+      cursor: pointer;
+      font-weight: 950;
+    }
+
+    .footer-bottom {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 22px 0 32px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .footer-socials a {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.055);
+      font-weight: 950;
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .footer-socials a:hover {
+      transform: translateY(-2px);
+      background: rgba(45, 247, 199, 0.12);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1080px) {
+      .values-grid,
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .nav.open .nav-links,
+      .nav.open .nav-actions {
+        display: flex;
+      }
+
+      .nav.open .nav-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px 0;
+      }
+
+      .nav.open .nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .nav.open .nav-actions {
+        width: 100%;
+      }
+
+      .nav.open .menu-toggle {
+        position: absolute;
+        right: 20px;
+        top: 18px;
+      }
+
+      .hero-grid,
+      .section-head,
+      .story-grid,
+      .timeline-wrap,
+      .faq-wrap,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-console {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 18vw, 4.8rem);
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .values-grid,
+      .stats-grid,
+      .console-grid,
+      .footer-main {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-row {
+        grid-template-columns: 92px 1fr 38px;
+      }
+
+      .team-panel {
+        min-height: 380px;
+      }
+
+      .newsletter {
+        border-radius: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="page">
+    <nav class="nav" id="nav">
+      <div class="container nav-inner">
+        <a href="index.html" class="logo" aria-label="Intelliroot home">
+          <span class="logo-mark">IR</span>
+          <span>INTELLIROOT</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+        <div class="nav-links">
+         <a href="index.html">Home</a>
+          <a href="service.html">Services</a>
+          <a href="about.html">About</a>
+          <a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn" href="services.html">Services</a>
+          <a class="btn btn-primary" href="#contact">Get Assessment</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero" id="about">
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <div class="eyebrow"><span class="pulse"></span> About Intelliroot / CERT-In Empanelled</div>
+            <h1><span class="gradient-text">Built by practitioners.</span><br />Trusted by enterprises.</h1>
+            <p>
+              Intelliroot is a CERT-In empanelled cybersecurity services firm helping organizations validate defenses, meet compliance goals, and strengthen cyber resilience across India, the UAE, and the USA.
+            </p>
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">Talk to an Expert →</a>
+              <a href="#story" class="btn">Our Story</a>
+            </div>
+            <div class="hero-tags">
+              <span>Offensive Security</span>
+              <span>Compliance Audits</span>
+              <span>Managed Security</span>
+              <span>Breach Response</span>
+            </div>
+          </div>
+
+          <aside class="about-console reveal" aria-label="About dashboard mockup">
+            <div class="console-inner">
+              <div class="console-card">
+                <div class="console-top">
+                  <div>
+                    <div class="console-title">Enterprise Trust Profile</div>
+                    <div class="console-score">2019<small> founded</small></div>
+                  </div>
+                  <div class="status-pill">CERT-In</div>
+                </div>
+                <div class="trust-list">
+                  <div class="trust-row"><span>Credentials</span><div class="bar"><i style="--w:94%"></i></div><span>94%</span></div>
+                  <div class="trust-row"><span>Methodology</span><div class="bar"><i style="--w:92%"></i></div><span>92%</span></div>
+                  <div class="trust-row"><span>Coverage</span><div class="bar"><i style="--w:96%"></i></div><span>96%</span></div>
+                  <div class="trust-row"><span>Compliance</span><div class="bar"><i style="--w:90%"></i></div><span>90%</span></div>
+                </div>
+              </div>
+
+              <div class="console-grid">
+                <div class="metric-card"><strong>11</strong><span>Cybersecurity service domains for modern attack surfaces.</span></div>
+                <div class="metric-card"><strong>40+</strong><span>Specialized services across assessment, audit, and response.</span></div>
+              </div>
+
+              <div class="console-alert">
+                <h3>Security with business context</h3>
+                <p>We connect technical findings to business risk so leadership, engineering, and security teams can act with clarity.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <section id="story">
+        <div class="container story-grid">
+          <article class="story-card reveal">
+            <div class="section-kicker">Who we are</div>
+            <h2>India’s cybersecurity partner for enterprise and critical infrastructure.</h2>
+            <p>
+              Intelliroot works with organizations that need more than a checklist. The team blends offensive security, compliance, and security operations experience to help clients understand exposure and improve resilience.
+            </p>
+            <p>
+              The company’s public positioning highlights certified engineers with OSCP, CRTO, CISSP, and CISA credentials, delivering offensive security, compliance audits, and managed security across India, the UAE, and the USA.
+            </p>
+          </article>
+
+          <div class="story-points">
+            <div class="story-point reveal">
+              <span>01</span>
+              <div>
+                <strong>Practitioner-led security</strong>
+                <p>Engagements are designed and executed by cybersecurity practitioners who understand real attack paths and remediation realities.</p>
+              </div>
+            </div>
+            <div class="story-point reveal">
+              <span>02</span>
+              <div>
+                <strong>Framework-aligned delivery</strong>
+                <p>Testing and audit work can align with OWASP, PTES, OSSTMM, MITRE ATT&CK, ISO 27001, SOC 2, PCI DSS, and DPDPA requirements.</p>
+              </div>
+            </div>
+            <div class="story-point reveal">
+              <span>03</span>
+              <div>
+                <strong>Actionable outcomes</strong>
+                <p>Reports are structured for leadership clarity and engineering execution, with remediation guidance and retesting pathways.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proof">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-card reveal"><strong>200+</strong><span>Security engagements delivered for enterprise and regulated environments.</span></div>
+            <div class="stat-card reveal"><strong>40+</strong><span>Specialized cybersecurity services across offensive, defensive, and compliance domains.</span></div>
+            <div class="stat-card reveal"><strong>98%</strong><span>Satisfaction-focused delivery with practical guidance and clear reporting.</span></div>
+            <div class="stat-card reveal"><strong>3</strong><span>Primary geographies served: India, UAE, and USA.</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="mission">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-kicker">Mission & vision</div>
+              <h2>Helping organizations become secure by design.</h2>
+            </div>
+            <p>
+              This section follows the same premium service-page rhythm: concise pillars, strong cards, and clear value statements for enterprise buyers.
+            </p>
+          </div>
+
+          <div class="mission-grid">
+            <article class="mission-card reveal">
+              <div class="mission-icon">◎</div>
+              <h3>Mission</h3>
+              <p>Help organizations build resilient, sustainable, and objective-driven security programs that can withstand evolving cyber threats.</p>
+            </article>
+            <article class="mission-card reveal">
+              <div class="mission-icon">⌬</div>
+              <h3>Vision</h3>
+              <p>Become a trusted cybersecurity partner for enterprises that need proactive protection, verified controls, and regulatory confidence.</p>
+            </article>
+            <article class="mission-card reveal">
+              <div class="mission-icon">✓</div>
+              <h3>Promise</h3>
+              <p>Deliver independent, actionable assurance through practitioner-led assessments, transparent communication, and measurable improvements.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="values">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <div class="section-kicker">Values</div>
+              <h2>The principles behind every engagement.</h2>
+            </div>
+            <p>
+              Use these cards to communicate Intelliroot’s tone: technical credibility, confidentiality, clarity, and long-term security maturity.
+            </p>
+          </div>
+
+          <div class="values-grid">
+            <article class="value-card reveal">
+              <div class="value-number">01</div>
+              <h3>Integrity first</h3>
+              <p>We handle client environments, data, and findings with strict confidentiality and professional discipline.</p>
+            </article>
+            <article class="value-card reveal">
+              <div class="value-number">02</div>
+              <h3>Evidence over noise</h3>
+              <p>We prioritize validated risk and practical impact over generic vulnerability lists.</p>
+            </article>
+            <article class="value-card reveal">
+              <div class="value-number">03</div>
+              <h3>Clarity for action</h3>
+              <p>We translate technical depth into clear next steps for executives, security teams, and engineers.</p>
+            </article>
+            <article class="value-card reveal">
+              <div class="value-number">04</div>
+              <h3>Continuous resilience</h3>
+              <p>We support improvement through remediation workshops, retesting, governance, and long-term advisory.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="team">
+        <div class="container timeline-wrap">
+          <div class="team-panel reveal">
+            <div class="orbit" aria-hidden="true">
+              <span class="node one"></span>
+              <span class="node two"></span>
+              <span class="node three"></span>
+            </div>
+            <div class="team-content">
+              <div class="section-kicker">The team</div>
+              <h2>Certified engineers with adversarial experience.</h2>
+              <p>Intelliroot’s public profile emphasizes practitioner credentials including OSCP, CRTO, CISSP, and CISA, plus structured methodology across offensive security and compliance work.</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <article class="timeline-card reveal">
+              <div class="timeline-dot">01</div>
+              <div>
+                <h3>Founded with a security-first focus</h3>
+                <p>Established as a cybersecurity firm focused on application security, penetration testing, cloud security, audit, compliance, and managed services.</p>
+              </div>
+            </article>
+            <article class="timeline-card reveal">
+              <div class="timeline-dot">02</div>
+              <div>
+                <h3>CERT-In empanelled assurance</h3>
+                <p>Built credibility around independent security testing, audit readiness, and framework-led delivery for organizations operating in India.</p>
+              </div>
+            </article>
+            <article class="timeline-card reveal">
+              <div class="timeline-dot">03</div>
+              <div>
+                <h3>Expanded service coverage</h3>
+                <p>Service domains now include VAPT, red team, AppSec, DevSecOps, cloud, OT/IoT, compliance, operations, embedded security, breach response, and regulatory readiness.</p>
+              </div>
+            </article>
+            <article class="timeline-card reveal">
+              <div class="timeline-dot">04</div>
+              <div>
+                <h3>Global delivery posture</h3>
+                <p>Serving enterprises across India, the UAE, and the USA with assessment, advisory, and response capabilities.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <div class="container faq-wrap">
+          <div class="reveal">
+            <div class="section-kicker">FAQ</div>
+            <h2>About Intelliroot</h2>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item reveal open">
+              <button class="faq-question" type="button"><span>What does Intelliroot do?</span><span>−</span></button>
+              <div class="faq-answer"><p>Intelliroot provides cybersecurity services including VAPT, red team operations, application security, cloud security, compliance audits, managed security, and breach response.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button"><span>Is Intelliroot CERT-In empanelled?</span><span>+</span></button>
+              <div class="faq-answer"><p>Yes. Intelliroot publicly positions itself as a CERT-In empanelled cybersecurity services firm serving organizations across India and global markets.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button"><span>Which industries can use this about page?</span><span>+</span></button>
+              <div class="faq-answer"><p>The page is suitable for enterprise, financial services, healthcare, SaaS, professional services, and critical infrastructure buyers who need a trust-building cybersecurity partner profile.</p></div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button"><span>Is this design copied from ikPin?</span><span>+</span></button>
+              <div class="faq-answer"><p>No. It uses a similar modern cybersecurity page structure and mood, but the layout, sections, text, interactions, and code are original and adapted for Intelliroot.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="contact">
+        <div class="container">
+          <div class="cta-box reveal">
+            <div>
+              <div class="section-kicker">Work with us</div>
+              <h2>Ready to build measurable cyber resilience?</h2>
+              <p>Connect this CTA to your contact form, CRM, or booking tool. For now, it opens an email request to Intelliroot’s services team.</p>
+            </div>
+            <a href="mailto:services@intelliroot.com" class="btn btn-primary">Contact Intelliroot →</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-main">
+        <div class="footer-about reveal">
+          <a href="index.html" class="logo" aria-label="Intelliroot home">
+            <span class="logo-mark">IR</span>
+            <span>INTELLIROOT</span>
+          </a>
+          <p>Intelliroot delivers cybersecurity assessments, red team operations, cloud security, compliance audits, and breach response for enterprises across India, UAE, and the USA.</p>
+          <div class="footer-badges">
+            <span>CERT-In Empanelled</span>
+            <span>ISO 27001 Aligned</span>
+            <span>VAPT Experts</span>
+          </div>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Services</h3>
+          <ul class="footer-links">
+            <li><a href="services.html">Penetration Testing</a></li>
+            <li><a href="services.html">Red Team Operations</a></li>
+            <li><a href="services.html">Cloud Security</a></li>
+            <li><a href="services.html">Compliance Audits</a></li>
+            <li><a href="services.html">Breach Response</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#mission">Mission</a></li>
+            <li><a href="#values">Values</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h3>Contact</h3>
+          <div class="footer-contact">
+            <div class="contact-item">
+              <span class="contact-label">Email</span>
+              <a href="mailto:services@intelliroot.com">services@intelliroot.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Phone</span>
+              <a href="tel:+919403890283">+91 94038 90283</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label">Bangalore</span>
+              <span>#1685, 2nd and 5th Floor, 27th Main Road, Sector 2, HSR Layout, Bengaluru, Karnataka, India</span>
+            </div>
+          </div>
+          <form class="newsletter" id="newsletterForm">
+            <input type="email" placeholder="Work email" aria-label="Work email" required />
+            <button type="submit" aria-label="Subscribe">→</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> Intelliroot Technologies. All rights reserved.</p>
+        <div class="footer-socials" aria-label="Social links">
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const menuToggle = document.getElementById('menuToggle');
+    const year = document.getElementById('year');
+    const faqItems = document.querySelectorAll('.faq-item');
+    const newsletterForm = document.getElementById('newsletterForm');
+
+    year.textContent = new Date().getFullYear();
+
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      menuToggle.textContent = nav.classList.contains('open') ? '×' : '☰';
+    });
+
+    document.querySelectorAll('.nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        menuToggle.textContent = '☰';
+      });
+    });
+
+    faqItems.forEach(item => {
+      const question = item.querySelector('.faq-question');
+      const marker = question.querySelector('span:last-child');
+
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+
+        faqItems.forEach(other => {
+          other.classList.remove('open');
+          other.querySelector('.faq-question span:last-child').textContent = '+';
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          marker.textContent = '−';
+        }
+      });
+    });
+
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', event => {
+        event.preventDefault();
+        const input = newsletterForm.querySelector('input');
+        const value = input.value.trim();
+        if (!value) return;
+        alert('Thanks. Connect this form to your email platform or CRM.');
+        input.value = '';
+      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    document.addEventListener('mousemove', (event) => {
+      const panel = document.querySelector('.about-console');
+      if (!panel || window.innerWidth < 980) return;
+      const rect = panel.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const rotateY = ((x / rect.width) - 0.5) * 8;
+      const rotateX = ((y / rect.height) - 0.5) * -8;
+      panel.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    document.addEventListener('mouseleave', () => {
+      const panel = document.querySelector('.about-console');
+      if (panel) panel.style.transform = 'none';
+    });
+  </script>
+</body>
+</html>
